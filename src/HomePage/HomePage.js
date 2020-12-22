@@ -1,6 +1,7 @@
 import React from "react";
+import { ApplyForm } from "../StudentApply";
 
-import { userService, authenticationService } from "@/_services";
+import { userService, authenticationService } from "../_services";
 
 class HomePage extends React.Component {
   constructor(props) {
@@ -39,6 +40,7 @@ class HomePage extends React.Component {
             </ul>
           )}
         </div>
+        <ApplyForm />
       </div>
     );
   }
