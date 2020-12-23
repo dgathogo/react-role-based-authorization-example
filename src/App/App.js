@@ -7,6 +7,7 @@ import { PrivateRoute } from "../_components";
 import { HomePage } from "../HomePage";
 import { AdminPage } from "../AdminPage";
 import { LoginPage } from "../LoginPage";
+import { ApplyForm } from "../StudentApply";
 
 class App extends React.Component {
   constructor(props) {
@@ -55,6 +56,7 @@ class App extends React.Component {
             </nav>
           )}
           <div className="jumbotron">
+            <Route path="/apply" component={ApplyForm} />
             <div className="container">
               <div className="row">
                 <div className="col-md-6 offset-md-3">

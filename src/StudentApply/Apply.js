@@ -3,8 +3,6 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-import "bootstrap/dist/css/bootstrap.min.css";
-
 import steps from "./steps";
 
 function FormWrapper({
@@ -27,13 +25,13 @@ function FormWrapper({
       )}
       <div>
         <Button
-          className="prevBtn"
+          className="prevBtn form-group"
           onClick={goToPreviousStep}
           disabled={!canGoBack}
         >
           Previous
         </Button>
-        <Button className="nextBtn" type="submit">
+        <Button className="nextBtn form-group" type="submit">
           {actionLabel || (isLastStep ? "Submit" : "Next step")}
         </Button>
       </div>
@@ -73,14 +71,7 @@ function ApplyForm() {
   }, []);
 
   return (
-    <div className="container">
-      <NavbarWrapper />
-      <FormikWizard
-        steps={steps}
-        onSubmit={handleSubmit}
-        render={FormWrapper}
-      />
-    </div>
+    <FormikWizard steps={steps} onSubmit={handleSubmit} render={FormWrapper} />
   );
 }
 

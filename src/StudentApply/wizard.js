@@ -1,27 +1,46 @@
 import React from "react";
-import { FastField, useFormikContext } from "formik";
+import { FastField, useFormikContext, ErrorMessage } from "formik";
 import { useFormikWizard } from "formik-wizard";
 import DatePicker from "react-date-picker";
+import { FormikControl } from "../_components";
 
 function NameInfo() {
   const { errors, touched } = useFormikContext();
 
   return (
     <div>
-      <div>
+      <div className="form-group">
         <label htmlFor="firstName">First name: </label>
-        <FastField name="firstName" id="firstName" />
+        <FastField
+          name="firstName"
+          id="firstName"
+          className={
+            "form-control" +
+            (errors.firstName && touched.firstName ? " is-invalid" : "")
+          }
+        />
+        <ErrorMessage
+          name="firstName"
+          component="div"
+          className="invalid-feedback"
+        />
       </div>
-      <small style={{ color: "red" }}>
-        {touched.firstName && errors.firstName}
-      </small>
-      <div>
+      <div className="form-group">
         <label htmlFor="lastName">Last name: </label>
-        <FastField name="lastName" id="lastName" />
+        <FastField
+          name="lastName"
+          id="lastName"
+          className={
+            "form-control" +
+            (errors.firstName && touched.firstName ? " is-invalid" : "")
+          }
+        />
+        <ErrorMessage
+          name="lastName"
+          component="div"
+          className="invalid-feedback"
+        />
       </div>
-      <small style={{ color: "red" }}>
-        {touched.lastName && errors.lastName}
-      </small>
     </div>
   );
 }
@@ -31,11 +50,22 @@ function EmailInfo() {
 
   return (
     <div>
-      <div>
+      <div className="form-group">
         <label htmlFor="email">Email address: </label>
-        <FastField name="email" id="email" />
+        <FastField
+          name="email"
+          id="email"
+          className={
+            "form-control" +
+            (errors.email && touched.email ? " is-invalid" : "")
+          }
+        />
+        <ErrorMessage
+          name="email"
+          component="div"
+          className="invalid-feedback"
+        />
       </div>
-      <small style={{ color: "red" }}>{touched.email && errors.email}</small>
     </div>
   );
 }
@@ -47,9 +77,20 @@ function PhoneInfo() {
     <div>
       <div>
         <label htmlFor="number">Phone number: </label>
-        <FastField name="number" id="number" />
+        <FastField
+          name="number"
+          id="number"
+          className={
+            "form-control" +
+            (errors.number && touched.number ? " is-invalid" : "")
+          }
+        />
+        <ErrorMessage
+          name="number"
+          component="div"
+          className="invalid-feedback"
+        />
       </div>
-      <small style={{ color: "red" }}>{touched.number && errors.number}</small>
     </div>
   );
 }
@@ -69,24 +110,24 @@ function DateInfo() {
         }}
         value={values.date}
       />
-      <small style={{ color: "red" }}>{touched.date && errors.date}</small>
+      <ErrorMessage name="date" component="div" className="invalid-feedback" />
     </div>
   );
 }
 
 function GenderInfo() {
-  const { errors, touched } = useFormikContext();
-
+  const genderOptions = [
+    { key: "Male", value: "male" },
+    { key: "Female", value: "female" },
+  ];
   return (
-    <div>
-      <div>
-        <label htmlFor="gender">Gender: </label>
-        <FastField name="gender" id="gender" as="select">
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-        </FastField>
-      </div>
-      <small style={{ color: "red" }}>{touched.gender && errors.gender}</small>
+    <div className="form-group">
+      <FormikControl
+        control="radio"
+        label="Gender"
+        name="gender"
+        options={genderOptions}
+      ></FormikControl>
     </div>
   );
 }
@@ -98,37 +139,83 @@ function AddressInfo() {
     <div>
       <div>
         <label htmlFor="address">Address: </label>
-        <FastField name="address" id="address" />
+        <FastField
+          name="address"
+          id="address"
+          className={
+            "form-control" +
+            (errors.address && touched.address ? " is-invalid" : "")
+          }
+        />
+        <ErrorMessage
+          name="address"
+          component="div"
+          className="invalid-feedback"
+        />
       </div>
-      <small style={{ color: "red" }}>
-        {touched.address && errors.address}
-      </small>
       <div>
         <label htmlFor="address2">Address 2: </label>
-        <FastField name="address2" id="address2" />
+        <FastField
+          name="address2"
+          id="address2"
+          className={
+            "form-control" +
+            (errors.address2 && touched.address2 ? " is-invalid" : "")
+          }
+        />
+        <ErrorMessage
+          name="address2"
+          component="div"
+          className="invalid-feedback"
+        />
       </div>
-      <small style={{ color: "red" }}>
-        {touched.address2 && errors.address2}
-      </small>
       <div>
         <label htmlFor="city">City: </label>
-        <FastField name="city" id="city" />
+        <FastField
+          name="city"
+          id="city"
+          className={
+            "form-control" + (errors.city && touched.city ? " is-invalid" : "")
+          }
+        />
+        <ErrorMessage
+          name="city"
+          component="div"
+          className="invalid-feedback"
+        />
       </div>
-      <small style={{ color: "red" }}>{touched.city && errors.city}</small>
       <div>
         <label htmlFor="country">Country: </label>
-        <FastField name="country" id="country" />
+        <FastField
+          name="country"
+          id="country"
+          className={
+            "form-control" +
+            (errors.country && touched.country ? " is-invalid" : "")
+          }
+        />
+        <ErrorMessage
+          name="country"
+          component="div"
+          className="invalid-feedback"
+        />
       </div>
-      <small style={{ color: "red" }}>
-        {touched.country && errors.country}
-      </small>
       <div>
         <label htmlFor="zipcode">Zipcode: </label>
-        <FastField name="zipcode" id="zipcode" />
+        <FastField
+          name="zipcode"
+          id="zipcode"
+          className={
+            "form-control" +
+            (errors.zipcode && touched.zipcode ? " is-invalid" : "")
+          }
+        />
+        <ErrorMessage
+          name="zipcode"
+          component="div"
+          className="invalid-feedback"
+        />
       </div>
-      <small style={{ color: "red" }}>
-        {touched.zipcode && errors.zipcode}
-      </small>
     </div>
   );
 }
@@ -140,9 +227,20 @@ function MajorInfo() {
     <div>
       <div>
         <label htmlFor="major">What field would you like to study? : </label>
-        <FastField name="major" id="major" />
+        <FastField
+          name="major"
+          id="major"
+          className={
+            "form-control" +
+            (errors.major && touched.major ? " is-invalid" : "")
+          }
+        />
+        <ErrorMessage
+          name="major"
+          component="div"
+          className="invalid-feedback"
+        />
       </div>
-      <small style={{ color: "red" }}>{touched.major && errors.major}</small>
     </div>
   );
 }
@@ -154,14 +252,24 @@ function PassportInfo() {
     <div>
       <div>
         <label htmlFor="passport">Do you have a passport?: </label>
-        <FastField name="passport" id="passport" as="select">
+        <FastField
+          name="passport"
+          id="passport"
+          as="select"
+          className={
+            "form-control" +
+            (errors.passport && touched.passport ? " is-invalid" : "")
+          }
+        >
           <option value="yes">Yes</option>
           <option value="no">No</option>
         </FastField>
+        <ErrorMessage
+          name="passport"
+          component="div"
+          className="invalid-feedback"
+        />
       </div>
-      <small style={{ color: "red" }}>
-        {touched.passport && errors.passport}
-      </small>
     </div>
   );
 }
@@ -173,12 +281,23 @@ function VisaInfo() {
     <div>
       <div>
         <label htmlFor="visa">Do you have a US visa?: </label>
-        <FastField name="visa" id="visa" as="select">
+        <FastField
+          name="visa"
+          id="visa"
+          as="select"
+          className={
+            "form-control" + (errors.visa && touched.visa ? " is-invalid" : "")
+          }
+        >
           <option value="yes">Yes</option>
           <option value="no">No</option>
         </FastField>
+        <ErrorMessage
+          name="visa"
+          component="div"
+          className="invalid-feedback"
+        />
       </div>
-      <small style={{ color: "red" }}>{touched.visa && errors.visa}</small>
     </div>
   );
 }
@@ -190,14 +309,24 @@ function EducationInfo() {
     <div>
       <div>
         <label htmlFor="education">Educational Status: </label>
-        <FastField name="education" id="education" as="select">
+        <FastField
+          name="education"
+          id="education"
+          as="select"
+          className={
+            "form-control" +
+            (errors.education && touched.education ? " is-invalid" : "")
+          }
+        >
           <option value="High School">High School</option>
           <option value="College/University">College/University</option>
         </FastField>
+        <ErrorMessage
+          name="education"
+          component="div"
+          className="invalid-feedback"
+        />
       </div>
-      <small style={{ color: "red" }}>
-        {touched.education && errors.education}
-      </small>
     </div>
   );
 }
@@ -211,14 +340,24 @@ function StartDateInfo() {
         <label htmlFor="startingDate">
           When would you like to begin classes?:{" "}
         </label>
-        <FastField name="startingDate" id="startingDate" as="select">
+        <FastField
+          name="startingDate"
+          id="startingDate"
+          as="select"
+          className={
+            "form-control" +
+            (errors.startingDate && touched.startingDate ? " is-invalid" : "")
+          }
+        >
           <option value="fall">August 2021</option>
           <option value="spring">January 2022</option>
         </FastField>
+        <ErrorMessage
+          name="startingDate"
+          component="div"
+          className="invalid-feedback"
+        />
       </div>
-      <small style={{ color: "red" }}>
-        {touched.startingDate && errors.startingDate}
-      </small>
     </div>
   );
 }
@@ -230,15 +369,26 @@ function ExamInfo() {
     <div>
       <div>
         <label htmlFor="exam">Which exams have you taken?: </label>
-        <FastField name="exam" id="exam" as="select">
+        <FastField
+          name="exam"
+          id="exam"
+          as="select"
+          className={
+            "form-control" + (errors.exam && touched.exam ? " is-invalid" : "")
+          }
+        >
           <option value="SAT">SAT</option>
           <option value="TOEFL">TOEFL</option>
           <option value="IELTS">IELTS</option>
           <option value="Duolingo English Exam">Duolingo English Exam</option>
           <option value="None">None</option>
         </FastField>
+        <ErrorMessage
+          name="exam"
+          component="div"
+          className="invalid-feedback"
+        />
       </div>
-      <small style={{ color: "red" }}>{touched.exam && errors.exam}</small>
     </div>
   );
 }
@@ -250,15 +400,25 @@ function SponsorInfo() {
     <div>
       <div>
         <label htmlFor="sponsor">Who will sponsor education?: </label>
-        <FastField name="sponsor" id="sponsor" as="select">
+        <FastField
+          name="sponsor"
+          id="sponsor"
+          as="select"
+          className={
+            "form-control" +
+            (errors.sponsor && touched.sponsor ? " is-invalid" : "")
+          }
+        >
           <option value="Myself">Myself</option>
           <option value="Parents">Parents</option>
           <option value="Others">Others</option>
         </FastField>
+        <ErrorMessage
+          name="sponsor"
+          component="div"
+          className="invalid-feedback"
+        />
       </div>
-      <small style={{ color: "red" }}>
-        {touched.sponsor && errors.sponsor}
-      </small>
     </div>
   );
 }

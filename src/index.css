@@ -5,9 +5,13 @@
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
+} */
+/* body {
+  font-family: arial;
+  margin-top: 50px;
+} */
 
-code {
+/* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 } */
@@ -28,10 +32,4 @@ code {
 }
 .nextBtn {
   float: right;
-}
-.navbar {
-  margin-bottom: 2rem;
-  margin-top: 3px;
-  border-bottom-left-radius: 7px;
-  border-bottom-right-radius: 7px;
 }

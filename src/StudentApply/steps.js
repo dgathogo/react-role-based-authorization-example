@@ -19,6 +19,16 @@ import {
 
 const steps = [
   {
+    id: "genderInfo",
+    component: GenderInfo,
+    initialValues: {
+      gender: "male",
+    },
+    validationSchema: object().shape({
+      gender: string().required("Gender is required"),
+    }),
+  },
+  {
     id: "nameInfo",
     component: NameInfo,
     initialValues: {
@@ -52,16 +62,7 @@ const steps = [
       number: string().required("Phone number is required"),
     }),
   },
-  {
-    id: "genderInfo",
-    component: GenderInfo,
-    initialValues: {
-      gender: "male",
-    },
-    validationSchema: object().shape({
-      gender: string().required("Gender is required"),
-    }),
-  },
+
   {
     id: "dateInfo",
     component: DateInfo,
